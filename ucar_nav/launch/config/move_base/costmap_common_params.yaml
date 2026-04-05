@@ -1,0 +1,36 @@
+#Description:
+# 代价地图通用参数配置文件,就是全局代价地图和局部代价地图
+# 共同都需要配置的参数,各参数意义如下:
+# robot_radius: 机器人的半径
+# "obstacle_range" 参数确定最大范围传感器读数，这将导致障碍物被放入代价地图中。
+# 在这里，我们把它设置在3米，这意味着机器人只会更新其地图包含距离移动基座3米以内的障碍物的信息。
+# “raytrace_range”参数确定了用于清除指定范围外的空间。
+# 将其设置为3.0米，这意味着机器人将尝试清除3米外的空间，在代价地图中清除3米外的障碍物。
+
+#robot_radius: 0.2
+map_type: costmap
+footprint: [[-0.154, -0.129], [-0.153, 0.133], [0.194, 0.130], [0.193, -0.130]]
+# footprint: [[-0.163, -0.138], [-0.163, 0.138], [0.201, 0.138], [0.201, -0.138]]
+obstacle_layer: 
+  enabled: true #启用
+  combination_method: 1   #障碍物与其他层数据的组合方式
+  track_unknown_space: true #是否跟踪未知空间
+  obstacle_range: 5 #障碍物的检测范围，单位为米。在此范围内检测到的障碍物会被放入代价地图中
+  raytrace_range: 5 #射线跟踪的范围，单位为米。用于在代价地图中清除指定范围外的空间
+  observation_sources: laser_scan_sensor  #观测源列表
+  laser_scan_sensor: {
+    sensor_frame: laser_frame,
+    data_type: LaserScan,
+    topic: scan,
+    marking: true,
+    clearing: true,
+    inf_is_valid: true
+  }
+ 
+inflation_layer: #膨胀层参数
+  enabled: true
+  cost_scaling_factor: 2.5 #代价因子的缩放比例
+  inflation_radius: 0.08 #膨胀半径，单位为米,一般来说，inflation_radius 应该大于机器人半径，以确保足够的安全距离
+ 
+static_layer:
+  enabled: true

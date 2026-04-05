@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="ucar_nav" type="initialpose" name="initialpose"  output="screen">
+  </node> 
+   
+   </launch>

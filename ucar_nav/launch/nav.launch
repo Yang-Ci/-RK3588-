@@ -1,0 +1,36 @@
+<launch>
+
+  <!-- Run the map server -->
+   
+  <include file="$(find ucar_controller)/launch/base_driver.launch" > </include> <!--启动机器人底层驱动控制节点 (base_driver)-->
+
+  <include file="$(find ydlidar)/launch/ydlidar.launch" > </include><!--启动 YDLIDAR 激光雷达-->
+
+   <include file="$(find ucar_nav)/launch/config/amcl/amcl_omni.launch" > </include><!--启动AMCL 是 ROS 导航栈中用于机器人在已知地图中定位的核心算法-->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+      <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
+      <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+      
+      <rosparam file="$(find ucar_nav)/launch/config/move_base/costmap_common_params.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find ucar_nav)/launch/config/move_base/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find ucar_nav)/launch/config/move_base/global_planner_params.yaml" command="load" />
+      <rosparam file="$(find ucar_nav)/launch/config/move_base/dwa_local_planner_params.yaml" command="load" />
+      <rosparam file="$(find ucar_nav)/launch/config/move_base/teb_local_planner_params.yaml" command="load" />
+      <rosparam file="$(find ucar_nav)/launch/config/move_base/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find ucar_nav)/launch/config/move_base/global_costmap_params.yaml" command="load" />
+    </node> 
+   
+  
+  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find ucar_nav)/maps/map.yaml" output="screen">
+    <param name="frame_id" value="map"/>
+  </node> -->
+  <node name="map_server" pkg="map_server" type="map_server" args="/home/iflytek/ucar_ws/src/ucar_nav/maps/mapp.yaml" output="screen">
+    <param name="frame_id" value="map"/><!--启动预先扫好的地图 -->
+  </node>
+  <!-- <node name="send_goals_b" pkg="send_goals" type="send_goals_b" args="" output="screen"></node> -->
+  
+  
+ 
+  
+</launch>

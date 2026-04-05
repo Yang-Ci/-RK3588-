@@ -1,0 +1,22 @@
+<launch>
+  <!-- 摄像头输入 -->
+  <!--<node pkg="usb_cam" type="usb_cam_node" name="usb_cam" output="screen" />-->
+
+  <!-- 扫描二维码，识别类别 -->
+  <node pkg="ucar_camera" name="qrcode_node" type="ucar_cam.py" output="screen" />
+
+  <!-- yolov5 启动 -->
+  <include file="$(find yolov5_ros)/launch/yolov5.launch" />
+
+  <!-- YOLO 类别解析 -->
+  <node pkg="ucar_object" name="yolo_parser" type="object_selector.py" output="screen" />
+
+  <!-- 提取物品1 -->
+  <node pkg="ucar_object" name="get_object" type="get_object.py" output="screen" />
+
+  <!-- 模拟仿真房间识别 + 提取物品2 + 识别房间 -->
+  <node pkg="ucar_room" name="room_detector" type="room_detector.py" output="screen" />
+
+  <!-- 播报系统 -->
+  <node pkg="ucar_manager" name="task_manager" type="task_manager.py" output="screen" />
+</launch>

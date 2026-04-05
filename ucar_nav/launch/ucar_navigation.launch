@@ -1,0 +1,56 @@
+<launch>
+  <!-- 启动底层驱动控制节点 -->
+  <include file="$(find ucar_controller)/launch/base_driver.launch" /> <!--启动机器人底层驱动控制节点 (base_driver)-->
+
+  <!-- 启动 YDLIDAR 激光雷达 -->
+  <include file="$(find ydlidar)/launch/ydlidar.launch" /> <!--启动 YDLIDAR 激光雷达-->
+
+  <!-- 启动 AMCL (定位算法) -->
+  <include file="$(find ucar_nav)/launch/config/amcl/amcl_omni.launch" /> <!--启动AMCL 是 ROS 导航栈中用于机器人在已知地图中定位的核心算法-->
+ 
+ 
+  
+  <!-- 启动 Move Base 节点进行导航 -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+    
+    <rosparam file="$(find ucar_nav)/launch/config/move_base/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find ucar_nav)/launch/config/move_base/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find ucar_nav)/launch/config/move_base/global_planner_params.yaml" command="load" />
+    <rosparam file="$(find ucar_nav)/launch/config/move_base/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find ucar_nav)/launch/config/move_base/teb_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find ucar_nav)/launch/config/move_base/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find ucar_nav)/launch/config/move_base/global_costmap_params.yaml" command="load" />
+  </node>
+
+  <!-- 启动地图服务器，使用预先扫好的地图 -->
+  <node name="map_server" pkg="map_server" type="map_server" args="/home/iflytek/ucar_ws/src/ucar_map/maps/20250709.yaml" output="log">
+    <param name="frame_id" value="map" /> <!--启动预先扫好的地图-->
+  </node>
+  
+  <!-- 启动 RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d /home/iflytek/ucar_ws/src/rviz/0708.rviz" />
+  
+  <!-- 启动语音命令节点 -->
+  <node pkg="speech_command" type="speech_command_node" name="speech_command_node" output="screen" />
+  
+  <!-- 启动完整系统 -->
+  <include file="$(find ucar_bringup)/launch/full_system.launch" />
+  
+  <!-- 启动唤醒监听节点 -->
+  <node pkg="wakeup_handler" type="wakeup_listener" name="wakeup_listener" output="screen" />
+  
+  <!-- 启动 ROSBridge WebSocket 节点 -->
+  <node name="rosbridge_websocket" pkg="rosbridge_server" type="rosbridge_websocket" output="screen" />
+  
+  <!-- 启动 WaterPlus 导航和管理节点 -->
+  <node pkg="waterplus_map_tools" type="wp_navi_server" name="wp_navi_server" output="screen" />
+  <node pkg="waterplus_map_tools" type="wp_manager" name="wp_manager" output="screen" />
+  
+  <!-- 启动颜色检测节点 -->
+  <node pkg="color" type="detector_node" name="detector" output="screen" /> 启动颜色检测节点
+  <node pkg="your_nav_pkg" type="se_nav" name="se_nav" output="screen" />
+
+</launch>

@@ -1,0 +1,4 @@
+# YOLOv5检测参数
+img_size: 640
+obj_thresh: 0.25
+nms_thresh: 0.45

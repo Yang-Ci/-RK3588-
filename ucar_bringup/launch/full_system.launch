@@ -1,0 +1,23 @@
+<launch>
+    <!-- 启动二维码识别Python节点 -->
+    <node pkg="ucar_camera" type="ucar_cam.py" name="ucar_cam" output="screen"/>
+
+<!-- 启动 YOLO 结果解析节点 -->
+<node pkg="ucar_object" name="yolo_parser" type="yolo_object_parser.py" output="screen" />
+
+  <!-- 启动房间识别 -->
+  <node pkg="ucar_room" name="room_detector" type="room_detector.py" output="screen" />
+
+  <!-- 启动任务领取识别 -->
+  <node pkg="ucar_object" name="get_object" type="get_object.py" output="screen" />
+
+  <!-- 启动红绿灯检测 -->
+  <node pkg="ucar_traffic" name="traffic_light" type="traffic_light.py" output="screen" />
+
+  <!-- 启动任务结算 -->
+  <node pkg="ucar_final" name="final_object" type="final_object.py" output="screen" />
+
+  <!-- 启动总管理器 -->
+  <node pkg="ucar_manager" name="task_manager" type="task_manager.py" output="screen" />
+</launch>
+

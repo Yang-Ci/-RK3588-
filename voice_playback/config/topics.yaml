@@ -1,0 +1,21 @@
+# 话题-音频映射配置（前缀+消息内容+后缀=音频文件名）
+/task_type:
+  prefix: "task_"      # 音频前缀：task_
+  suffix: ""           # 无后缀
+  msg_type: "String"   # 消息类型为字符串
+/pick_complete:
+  prefix: "pick_"
+  suffix: ""
+  msg_type: "String"
+/sim_complete:
+  prefix: "sim_"
+  suffix: ""
+  msg_type: "String"
+/road_open:
+  prefix: "road_"
+  suffix: ""
+  msg_type: "String"
+/final_settlement:
+  prefix: "final_"
+  suffix: ""
+  msg_type: "String"

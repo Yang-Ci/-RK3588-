@@ -1,0 +1,7 @@
+<launch>
+    <!-- 启动usb_cam节点 -->
+    <include file="$(find usb_cam)/launch/usb_cam-test.launch"/>
+
+    <node pkg="color" type="detector_node"   name="detector"  output="screen" />
+
+</launch>

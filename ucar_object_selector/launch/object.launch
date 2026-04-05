@@ -1,0 +1,18 @@
+<launch>
+  <!-- 1. 启动相机节点 -->
+  <include file="$(find ucar_camera)/launch/start_vision.launch" />
+  
+  <!-- 2. 启动目标选择节点，等待相机节点启动后再运行 -->
+  <node pkg="ucar_object_selector" type="object_selector_node" name="object_selector_node" output="screen" launch-prefix="bash -c 'sleep 2; $0 $@'">
+    <param name="~wait_for_camera" value="true" />
+  </node>
+  
+  <!-- 3. 启动Python视频处理脚本，等待目标选择节点启动后再运行 -->
+<node 
+  pkg="ucar_object_selector" 
+  type="video.py" 
+  name="video_processor" 
+  output="screen" 
+  launch-prefix="bash -c 'sleep 4; $0 $@'" 
+/>
+</launch>

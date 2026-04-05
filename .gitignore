@@ -1,0 +1,41 @@
+# Large model files (>50MB)
+rknn-toolkit2-1.5.0/examples/functions/hybrid_quant/ssd_mobilenet_v2.pb
+rknn-toolkit2-1.5.0/examples/tensorflow/ssd_mobilenet_v1/ssd_mobilenet_v1_coco_2017_11_17.pb
+
+# Miniconda installer
+miniconda/
+
+# RKNN toolkit packages
+rknn-toolkit2-1.5.0/packages/*.whl
+rknn-toolkit2-1.5.0/docker/
+
+# Large example models
+rknn-toolkit2-1.5.0/examples/caffe/mobilenet_v2/mobilenet_v2.caffemodel
+rknn-toolkit2-1.5.0/examples/functions/mmse/mobilenet_v1.pb
+rknn-toolkit2-1.5.0/examples/functions/model_pruning/mobilenet.caffemodel
+rknn-toolkit2-1.5.0/examples/tflite/mobilenet_v1/mobilenet_v1_1.0_224.tflite
+rknn-toolkit2-1.5.0/examples/pytorch/resnet18_qat/resnet18_i8.pt
+rknn-toolkit2-1.5.0/examples/onnx/yolov5_xunfei/*.onnx
+rknn-toolkit2-1.5.0/examples/onnx/yolov5/yolov5s.onnx
+
+# RKNN toolkit lite2 large models
+rknn-toolkit2-1.5.0/rknn_toolkit_lite2/examples/inference_with_lite/*.rknn
+toolkit2/rknn_toolkit_lite2/examples/inference_with_lite/*.rknn
+
+# Audio temp files
+speech_command/tmp/*.pcm
+speech_command/config/AIUI/*/common.jet
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+
+# Logs
+*.log
+
+# RKNN runtime
+librknnrt.so

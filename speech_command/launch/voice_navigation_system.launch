@@ -1,0 +1,7 @@
+<launch>
+  <!-- 启动语音唤醒识别节点（AIUITester） -->
+  <node pkg="speech_command" type="speech_command_node" name="speech_command_node" output="screen" />
+
+  <!-- 启动唤醒监听节点，收到唤醒后自动启动导航 -->
+  <node pkg="wakeup_handler" type="wakeup_listener" name="wakeup_listener" output="screen" />
+</launch>

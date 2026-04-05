@@ -1,0 +1,15 @@
+<launch>
+  <!-- 启动语音播放节点，并指定配置文件路径 -->
+  <node 
+    name="voice_player_node" 
+    pkg="voice_playback" 
+    type="voice_node.py" 
+    output="screen"  # 日志显示在终端
+  >
+    <!-- 传递配置文件路径参数 -->
+    <param 
+      name="topics" 
+      value="$(find voice_playback)/config/topics.yaml" 
+    />
+  </node>
+</launch>

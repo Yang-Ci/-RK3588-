@@ -1,0 +1,13 @@
+<launch>
+  <include file="$(find ucar_controller)/launch/base_driver.launch" > </include> <!--启动机器人底层驱动控制节点 (base_driver)-->
+
+  <include file="$(find usb_cam)/launch/usb_cam-test.launch"/>
+  <arg name="display_output" default="true"/>
+  <arg name="camera_topic" default="/usb_cam/image_raw"/>
+
+  <rosparam command="load" file="$(find line)/config/line_params.yaml" />
+  
+  <node pkg="line" type="line_follower_node" name="line_follower_node" output="screen">
+    </node>
+  
+</launch>

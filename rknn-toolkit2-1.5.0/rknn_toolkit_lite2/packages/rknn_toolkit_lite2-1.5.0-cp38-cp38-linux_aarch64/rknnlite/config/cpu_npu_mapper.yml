@@ -1,0 +1,20 @@
+%YAML 1.2
+---
+# !!!Do not modify it!!!
+SoCs:
+  RK3562:
+    npu_model: DOLPHIN3
+    npu_inside: True
+    npu_assemble: False
+  RK3566:
+    npu_model: DOLPHIN1
+    npu_inside: True
+    npu_assemble: False
+  RK3568:
+    npu_model: DOLPHIN1
+    npu_inside: True
+    npu_assemble: False
+  RK3588:
+    npu_model: DOLPHIN2
+    npu_inside: True
+    npu_assemble: False

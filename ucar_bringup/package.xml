@@ -1,0 +1,30 @@
+<package format="2">
+  <name>ucar_bringup</name>
+  <version>0.0.1</version>
+  <description>Launch file to start all competition modules</description>
+
+  <maintainer email="your_email@domain.com">your_name</maintainer>
+  <license>BSD</license>
+
+  <!-- 构建依赖 -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- 运行依赖 -->
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>detection_msgs</depend>
+  <depend>robot_vision</depend>
+  <depend>ucar_manager</depend>
+  <depend>ucar_object_selector</depend>
+  <depend>ucar_room</depend>
+  <depend>ucar_final</depend>
+  <depend>ucar_traffic</depend>
+  <depend>ros_yolov5</depend>  <!-- 改成你的yolo推理节点所在包名 -->
+
+  <!-- 如果还有其他包，也添加在这里 -->
+
+  <export>
+  </export>
+</package>
+

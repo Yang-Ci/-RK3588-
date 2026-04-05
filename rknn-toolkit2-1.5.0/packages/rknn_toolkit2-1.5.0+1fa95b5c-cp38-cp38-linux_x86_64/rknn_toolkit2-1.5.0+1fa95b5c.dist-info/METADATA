@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: rknn-toolkit2
+Version: 1.5.0+1fa95b5c
+Summary: Rockchip Neural Network Toolkit2
+Home-page: UNKNOWN
+Author: Rockchip
+Author-email: UNKNOWN
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Indenpendent
+Requires-Dist: fast-histogram (==0.11)
+Requires-Dist: flatbuffers (==1.12)
+Requires-Dist: numpy (==1.19.5)
+Requires-Dist: onnx (==1.10.0)
+Requires-Dist: onnxoptimizer (==0.2.7)
+Requires-Dist: onnxruntime (==1.10.0)
+Requires-Dist: opencv-python (==4.5.5.64)
+Requires-Dist: protobuf (==3.12.2)
+Requires-Dist: psutil (==5.9.0)
+Requires-Dist: requests (==2.27.1)
+Requires-Dist: ruamel.yaml (==0.17.4)
+Requires-Dist: scipy (==1.5.4)
+Requires-Dist: tensorflow (==2.6.2)
+Requires-Dist: torch (==1.10.1)
+Requires-Dist: torchvision (==0.11.2)
+Requires-Dist: tqdm (==4.64.0)
+
+# RKNN Toolkit2
+
+

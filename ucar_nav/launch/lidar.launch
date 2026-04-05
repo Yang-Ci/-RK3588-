@@ -1,0 +1,7 @@
+ <launch>
+  <!-- 启动底层驱动控制节点 -->
+  <include file="$(find ucar_controller)/launch/base_driver.launch" /> <!--启动机器人底层驱动控制节点 (base_driver)-->
+
+  <!-- 启动 YDLIDAR 激光雷达 -->
+  <include file="$(find ydlidar)/launch/ydlidar.launch" /> <!--启动 YDLIDAR 激光雷达-->
+</launch>

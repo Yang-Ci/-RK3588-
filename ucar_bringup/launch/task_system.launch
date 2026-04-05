@@ -1,0 +1,27 @@
+<launch>
+  <!-- 启动摄像头二维码识别 -->
+  <node pkg="ucar_vision" type="ucar_cam.py" name="ucar_cam" output="screen" />
+
+  <!-- 启动语音任务管理器 -->
+  <node pkg="ucar_manager" type="task_manager.py" name="task_manager" output="screen" />
+
+  <!-- 启动物品目标选择器（任务领取阶段） -->
+  <node pkg="ucar_object" type="object_selector.py" name="object_selector" output="screen" />
+
+  <!-- 启动房间识别器 -->
+  <node pkg="ucar_room" type="room_detector.py" name="room_detector" output="screen" />
+
+  <!-- 启动最终物体识别 -->
+  <node pkg="ucar_final" type="final_object.py" name="final_object" output="screen" />
+
+  <!-- YOLO输出转换为yolo_objects -->
+  <node pkg="ucar_object" type="yolo2string.py" name="yolo2string" output="screen" />
+
+  <!-- 启动YOLO识别主程序 -->
+  <node pkg="your_yolo_package" type="yolov5.py" name="yolov5" output="screen">
+    <!-- 如果你用参数文件，也可以加载 -->
+    <!-- <rosparam command="load" file="$(find your_yolo_package)/config/yolo_params.yaml" /> -->
+  </node>
+
+</launch>
+

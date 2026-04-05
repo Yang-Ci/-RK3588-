@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>ucar_object_detection</name>
+  <version>0.1.0</version>
+  <description>UCAR机器人目标识别与任务执行功能包</description>
+  <maintainer email="your_email@example.com">Your Name</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+  <depend>actionlib</depend>
+  <depend>move_base_msgs</depend>
+  <depend>tf2</depend>
+  <depend>tf2_ros</depend>
+  <depend>std_msgs</depend>
+
+
+  <build_export_depend>opencv2</build_export_depend>
+  <exec_depend>opencv2</exec_depend>
+  
+  <export>
+
+  </export>
+</package>
